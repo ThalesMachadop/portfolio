@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thales — Profissional de Tecnologia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0b0f14;
+            --bg-alt: #11161d;
+            --card: #161d26;
+            --text: #e6edf3;
+            --muted: #8b98a5;
+            --accent: #e4002b;
+            --accent-dark: #b00020;
+            --accent-soft: rgba(228, 0, 43, 0.12);
+            --border: #232c36;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        h1, h2, h3, .logo, .numero, .trajetoria-num {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(11, 15, 20, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 50;
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        nav ul a {
+            color: var(--muted);
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        nav ul a:hover {
+            color: var(--accent);
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        h2.titulo {
+            font-size: clamp(28px, 4vw, 38px);
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitulo {
+            color: var(--muted);
+            margin-bottom: 44px;
+        }
+
+        /* Hero */
+        #inicio {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 130px 0 80px;
+            overflow: hidden;
+        }
+
+        #inicio::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 78% 30%, rgba(228, 0, 43, 0.16), transparent 55%),
+                radial-gradient(circle at 12% 92%, rgba(228, 0, 43, 0.08), transparent 45%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            border: 1px solid rgba(228, 0, 43, 0.35);
+            padding: 7px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: pulso 1.8s ease-in-out infinite;
+        }
+
+        @keyframes pulso {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(228, 0, 43, 0.5); }
+            50% { box-shadow: 0 0 0 6px rgba(228, 0, 43, 0); }
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6.5vw, 72px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 .destaque {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--muted);
+            max-width: 560px;
+            margin-bottom: 34px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 56px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-foto {
+            position: relative;
+        }
+
+        .hero-foto::before {
+            content: "";
+            position: absolute;
+            inset: -24px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(228, 0, 43, 0.28), transparent 70%);
+            z-index: -1;
+            filter: blur(8px);
+        }
+
+        .hero-foto img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 0 8px var(--accent-soft), 0 30px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #ffffff;
+            font-weight: 600;
+            padding: 13px 28px;
+            border-radius: 30px;
+            font-size: 15px;
+            transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 6px 20px rgba(228, 0, 43, 0.35);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background: var(--accent-dark);
+            box-shadow: 0 10px 26px rgba(228, 0, 43, 0.45);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            box-shadow: none;
+            margin-left: 12px;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            box-shadow: none;
+        }
+
+        /* Métricas */
+        .metricas {
+            border-top: 1px solid var(--border);
+            background: var(--bg-alt);
+        }
+
+        .metricas-inner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .metrica {
+            padding: 40px 24px;
+            text-align: center;
+            border-left: 1px solid var(--border);
+        }
+
+        .metrica:first-child {
+            border-left: none;
+        }
+
+        .numero {
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .rotulo {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .nota {
+            color: var(--accent);
+            font-size: 0.5em;
+            vertical-align: super;
+            font-family: 'Inter', sans-serif;
+            transition: color 0.2s;
+        }
+
+        .nota:hover {
+            color: var(--accent-dark);
+        }
+
+        /* Marquee */
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg);
+            padding: 20px 0;
+        }
+
+        .marquee-inner {
+            display: inline-flex;
+            animation: desliza 30s linear infinite;
+        }
+
+        .marquee-inner span {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            color: var(--muted);
+            padding: 0 20px;
+        }
+
+        .marquee-inner span::after {
+            content: "•";
+            color: var(--accent);
+            margin-left: 40px;
+        }
+
+        @keyframes desliza {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* Sobre + Skills */
+        #sobre {
+            background: var(--bg-alt);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .sobre-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 56px;
+            align-items: start;
+        }
+
+        .sobre-grid p {
+            color: var(--muted);
+            margin-bottom: 16px;
+            font-size: 16px;
+        }
+
+        .sobre-grid p strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--text);
+            transition: border-color 0.2s, color 0.2s, transform 0.2s;
+        }
+
+        .skill:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Formação */
+        .formacao-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .card-formacao {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 30px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .card-formacao:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .card-formacao .icone {
+            font-size: 30px;
+            margin-bottom: 16px;
+        }
+
+        .card-formacao h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card-formacao p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        /* Trajetória */
+        #trajetoria {
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .trajetoria {
+            position: relative;
+            max-width: 720px;
+        }
+
+        .trajetoria-item {
+            position: relative;
+            padding: 0 0 48px 64px;
+        }
+
+        .trajetoria-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .trajetoria-item::before {
+            content: "";
+            position: absolute;
+            left: 21px;
+            top: 4px;
+            bottom: -4px;
+            width: 2px;
+            background: linear-gradient(var(--accent), var(--border));
+        }
+
+        .trajetoria-item:last-child::before {
+            display: none;
+        }
+
+        .trajetoria-num {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--card);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 0 5px rgba(228, 0, 43, 0.08);
+        }
+
+        .trajetoria-data {
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .trajetoria-item h3 {
+            font-size: 20px;
+            margin-bottom: 6px;
+        }
+
+        .trajetoria-empresa {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .trajetoria-item p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        .trajetoria-nota {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 13px;
+            max-width: 720px;
+        }
+
+        /* Projetos */
+        .projetos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card-projeto {
+            position: relative;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 30px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card-projeto:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .badge-andamento {
+            position: absolute;
+            top: 22px;
+            right: 22px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            border: 1px solid rgba(228, 0, 43, 0.3);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .card-projeto .icon {
+            font-size: 34px;
+            margin-bottom: 18px;
+        }
+
+        .card-projeto h3 {
+            font-size: 19px;
+            margin-bottom: 10px;
+            padding-right: 90px;
+        }
+
+        .card-projeto p {
+            color: var(--muted);
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .link-projeto {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .link-projeto .seta {
+            transition: transform 0.2s;
+        }
+
+        .card-projeto:hover .link-projeto .seta {
+            transform: translateX(4px);
+        }
+
+        /* Contato / CTA */
+        #contato {
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #contato::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 100%, rgba(228, 0, 43, 0.12), transparent 60%);
+            pointer-events: none;
+        }
+
+        #contato h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        #contato .subtitulo {
+            margin-bottom: 36px;
+        }
+
+        .contato-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .contato-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 14px 24px;
+            border-radius: 14px;
+            font-size: 15px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .contato-links a:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 28px 0;
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* Reveal */
+        .revela {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .revela.visivel {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 800px) {
+            .hero-grid,
+            .sobre-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-grid {
+                justify-items: center;
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .metricas-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .metrica {
+                border-left: none;
+                border-top: 1px solid var(--border);
+            }
+
+            .formacao-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 14px;
+            }
+
+            nav ul a {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <span class="logo">&lt;thales/&gt;</span>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#formacao">Formação</a></li>
+                <li><a href="#trajetoria">Trajetória</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="inicio">
+        <div class="container hero">
+            <div class="hero-grid">
+                <div>
+                    <span class="hero-badge"><span class="dot"></span> Disponível para oportunidades</span>
+                    <h1>Thales<br><span class="destaque">Profissional de Tecnologia</span></h1>
+                    <p>Do Direito para a tecnologia: transicionei de carreira em 2024 e hoje atuo com suporte, infraestrutura e desenvolvimento, unindo visão analítica e solução de problemas.</p>
+                    <a class="btn" href="#contato">Fale comigo</a>
+                    <a class="btn btn-ghost" href="#projetos">Ver projetos</a>
+                </div>
+                <div class="hero-foto revela">
+                    <img src="euThales.jpeg" alt="Foto de Thales">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="metricas">
+        <div class="container">
+            <div class="metricas-inner">
+                <div class="metrica revela">
+                    <div class="numero">2+</div>
+                    <div class="rotulo">anos na área de tecnologia</div>
+                </div>
+                <div class="metrica revela">
+                    <div class="numero">3<a class="nota" href="#trajetoria" title="Saiba mais">*</a></div>
+                    <div class="rotulo">empresas</div>
+                </div>
+                <div class="metrica revela">
+                    <div class="numero">N1→N2</div>
+                    <div class="rotulo">evolução em suporte</div>
+                </div>
+                <div class="metrica revela">
+                    <div class="numero">1º</div>
+                    <div class="rotulo">semestre em ADS</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="marquee">
+        <div class="marquee-inner">
+            <span>Manutenção de Hardware</span>
+            <span>Redes</span>
+            <span>Windows</span>
+            <span>Linux</span>
+            <span>Java</span>
+            <span>Git &amp; GitHub</span>
+            <span>Manutenção de Hardware</span>
+            <span>Redes</span>
+            <span>Windows</span>
+            <span>Linux</span>
+            <span>Java</span>
+            <span>Git &amp; GitHub</span>
+        </div>
+    </div>
+
+    <section id="sobre">
+        <div class="container">
+            <h2 class="titulo revela">Sobre mim</h2>
+            <p class="subtitulo revela">Quem sou eu e o que eu faço</p>
+            <div class="sobre-grid">
+                <div class="revela">
+                    <p>Profissional de tecnologia com transição de carreira: <strong>bacharel em Direito</strong>, migrei para a área em 2024 movido pela paixão por resolver problemas com tecnologia.</p>
+                    <p>Atuo com suporte técnico, manutenção de equipamentos e infraestrutura, além de desenvolver <strong>projetos pessoais em Java</strong> no tempo livre. O Direito me deu visão analítica e comunicação clara — habilidades que aplico todos os dias.</p>
+                </div>
+                <div class="revela">
+                    <h3 style="margin-bottom:14px; color:var(--accent);">Tecnologias</h3>
+                    <div class="skills">
+                        <span class="skill">Manutenção de Hardware</span>
+                        <span class="skill">Redes</span>
+                        <span class="skill">Windows</span>
+                        <span class="skill">Linux</span>
+                        <span class="skill">Java</span>
+                        <span class="skill">Git &amp; GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="formacao">
+        <div class="container">
+            <h2 class="titulo revela">Formação</h2>
+            <p class="subtitulo revela">Minha jornada acadêmica</p>
+            <div class="formacao-grid">
+                <div class="card-formacao revela">
+                    <div class="icone">🎓</div>
+                    <h3>Análise e Desenvolvimento de Sistemas — FIAP</h3>
+                    <p>Cursando, 1º semestre — previsão de conclusão para a metade de 2028.</p>
+                </div>
+                <div class="card-formacao revela">
+                    <div class="icone">⚖️</div>
+                    <h3>Bacharel em Direito</h3>
+                    <p>Graduação concluída — formação que desenvolveu pensamento crítico, análise de problemas e comunicação clara. Em 2024 realizei a transição de carreira para a tecnologia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="trajetoria">
+        <div class="container">
+            <h2 class="titulo revela">Trajetória</h2>
+            <p class="subtitulo revela">Minha evolução profissional desde 2024</p>
+            <div class="trajetoria">
+                <div class="trajetoria-item revela">
+                    <div class="trajetoria-num">01</div>
+                    <div class="trajetoria-data">ago/2024 · 8 meses</div>
+                    <h3>Estágio</h3>
+                    <div class="trajetoria-empresa">Prefeitura de Bragança Paulista</div>
+                    <p>Primeiro emprego na área de tecnologia, com atendimento e resolução de chamados de suporte técnico nível 1.</p>
+                </div>
+                <div class="trajetoria-item revela">
+                    <div class="trajetoria-num">02</div>
+                    <div class="trajetoria-data">abr/2025 · 10 meses</div>
+                    <h3>Técnico de Manutenção de Equipamentos de Informática</h3>
+                    <div class="trajetoria-empresa">Instituto Esperança (IESP)</div>
+                    <p>Atuação terceirizada para a Prefeitura de Bragança Paulista na área da saúde, com manutenção de equipamentos de informática e resolução de chamados de suporte técnico nível 1.</p>
+                </div>
+                <div class="trajetoria-item revela">
+                    <div class="trajetoria-num">03</div>
+                    <div class="trajetoria-data">fev/2026 · 6 meses</div>
+                    <h3>Técnico de Informática Nível A</h3>
+                    <div class="trajetoria-empresa">Irmandade da Santa Casa de Misericórdia de Itatiba</div>
+                    <p>Atuação terceirizada para a Prefeitura de Bragança Paulista na área da saúde, com atendimento a chamados de suporte nível 1 e alguns de nível 2, abrangendo sistemas operacionais, configurações avançadas, rede, softwares corporativos e diagnóstico de hardware.</p>
+                </div>
+            </div>
+            <p class="trajetoria-nota revela">* Atuação contínua na Prefeitura de Bragança Paulista ao longo de três vínculos consecutivos (estágio e duas terceirizadas).</p>
+        </div>
+    </section>
+
+    <section id="projetos">
+        <div class="container">
+            <h2 class="titulo revela">Projetos</h2>
+            <p class="subtitulo revela">Projetos em andamento</p>
+            <div class="projetos-grid">
+                <article class="card-projeto revela">
+                    <span class="badge-andamento">Em andamento</span>
+                    <div class="icon">🛠️</div>
+                    <h3>Sistema de Chamados de Suporte</h3>
+                    <p>Sistema para registrar e acompanhar chamados de TI: abertura, status e histórico.</p>
+                    <a class="link-projeto" href="#" target="_blank">Ver no GitHub <span class="seta">→</span></a>
+                </article>
+                <article class="card-projeto revela">
+                    <span class="badge-andamento">Em andamento</span>
+                    <div class="icon">💻</div>
+                    <h3>Controle de Estoque e Manutenção de Equipamentos</h3>
+                    <p>Gestão de patrimônio de informática, com cadastro de equipamentos e histórico de manutenções.</p>
+                    <a class="link-projeto" href="#" target="_blank">Ver no GitHub <span class="seta">→</span></a>
+                </article>
+                <article class="card-projeto revela">
+                    <span class="badge-andamento">Em andamento</span>
+                    <div class="icon">🍱</div>
+                    <h3>Controle de Estoque para Restaurante de Marmita</h3>
+                    <p>Gestão de insumos e produção de marmitas, com receitas, baixa automática de estoque e alertas.</p>
+                    <a class="link-projeto" href="#" target="_blank">Ver no GitHub <span class="seta">→</span></a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <div class="container">
+            <h2 class="titulo revela">Vamos conversar?</h2>
+            <p class="subtitulo revela">Estou disponível para novas oportunidades</p>
+            <div class="contato-links revela">
+                <a href="https://github.com/ThalesMachadop" target="_blank">🐙 GitHub</a>
+                <a href="https://linkedin.com/in/seu-usuario" target="_blank">💼 LinkedIn</a>
+                <a href="mailto:thales_mprado@hotmail.com">✉️ Email</a>
+                <a href="https://wa.me/5511995537028" target="_blank">💬 WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">© 2026 Thales Machado.</div>
+    </footer>
+
+    <script>
+        var observador = new IntersectionObserver(function (entradas) {
+            entradas.forEach(function (entrada) {
+                if (entrada.isIntersecting) {
+                    entrada.target.classList.add('visivel');
+                    observador.unobserve(entrada.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.revela').forEach(function (el) {
+            observador.observe(el);
+        });
+    </script>
+</body>
+
+</html>
