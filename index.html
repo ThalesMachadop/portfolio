@@ -362,6 +362,12 @@
         }
 
         /* Formação */
+        #formacao {
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
         .formacao-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -397,12 +403,6 @@
         }
 
         /* Trajetória */
-        #trajetoria {
-            background: var(--bg-alt);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
         .trajetoria {
             position: relative;
             max-width: 720px;
@@ -672,9 +672,9 @@
             <ul>
                 <li><a href="#inicio">Início</a></li>
                 <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#projetos">Projetos</a></li>
                 <li><a href="#formacao">Formação</a></li>
                 <li><a href="#trajetoria">Trajetória</a></li>
-                <li><a href="#projetos">Projetos</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
         </div>
@@ -761,6 +761,36 @@
         </div>
     </section>
 
+    <section id="projetos">
+        <div class="container">
+            <h2 class="titulo revela">Projetos</h2>
+            <p class="subtitulo revela">Projetos em andamento</p>
+            <div class="projetos-grid">
+                <article class="card-projeto revela">
+                    <span class="badge-andamento">Em andamento</span>
+                    <div class="icon">🛠️</div>
+                    <h3>Sistema de Chamados de Suporte</h3>
+                    <p>Sistema para registrar e acompanhar chamados de TI: abertura, status e histórico.</p>
+                    <a class="link-projeto" href="#" target="_blank">Ver no GitHub <span class="seta">→</span></a>
+                </article>
+                <article class="card-projeto revela">
+                    <span class="badge-andamento">Em andamento</span>
+                    <div class="icon">💻</div>
+                    <h3>Controle de Estoque e Manutenção de Equipamentos</h3>
+                    <p>Gestão de patrimônio de informática, com cadastro de equipamentos e histórico de manutenções.</p>
+                    <a class="link-projeto" href="#" target="_blank">Ver no GitHub <span class="seta">→</span></a>
+                </article>
+                <article class="card-projeto revela">
+                    <span class="badge-andamento">Em andamento</span>
+                    <div class="icon">🍱</div>
+                    <h3>Controle de Estoque para Restaurante de Marmita</h3>
+                    <p>Gestão de insumos e produção de marmitas, com receitas, baixa automática de estoque e alertas.</p>
+                    <a class="link-projeto" href="#" target="_blank">Ver no GitHub <span class="seta">→</span></a>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <section id="formacao">
         <div class="container">
             <h2 class="titulo revela">Formação</h2>
@@ -808,36 +838,6 @@
                 </div>
             </div>
             <p class="trajetoria-nota revela">* Atuação contínua na Prefeitura de Bragança Paulista ao longo de três vínculos consecutivos (estágio e duas terceirizadas).</p>
-        </div>
-    </section>
-
-    <section id="projetos">
-        <div class="container">
-            <h2 class="titulo revela">Projetos</h2>
-            <p class="subtitulo revela">Projetos em andamento</p>
-            <div class="projetos-grid">
-                <article class="card-projeto revela">
-                    <span class="badge-andamento">Em andamento</span>
-                    <div class="icon">🛠️</div>
-                    <h3>Sistema de Chamados de Suporte</h3>
-                    <p>Sistema para registrar e acompanhar chamados de TI: abertura, status e histórico.</p>
-                    <a class="link-projeto" href="#" target="_blank">Ver no GitHub <span class="seta">→</span></a>
-                </article>
-                <article class="card-projeto revela">
-                    <span class="badge-andamento">Em andamento</span>
-                    <div class="icon">💻</div>
-                    <h3>Controle de Estoque e Manutenção de Equipamentos</h3>
-                    <p>Gestão de patrimônio de informática, com cadastro de equipamentos e histórico de manutenções.</p>
-                    <a class="link-projeto" href="#" target="_blank">Ver no GitHub <span class="seta">→</span></a>
-                </article>
-                <article class="card-projeto revela">
-                    <span class="badge-andamento">Em andamento</span>
-                    <div class="icon">🍱</div>
-                    <h3>Controle de Estoque para Restaurante de Marmita</h3>
-                    <p>Gestão de insumos e produção de marmitas, com receitas, baixa automática de estoque e alertas.</p>
-                    <a class="link-projeto" href="#" target="_blank">Ver no GitHub <span class="seta">→</span></a>
-                </article>
-            </div>
         </div>
     </section>
 
